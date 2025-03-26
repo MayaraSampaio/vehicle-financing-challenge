@@ -9,7 +9,9 @@ Simulador de Financiamento de Veículos desenvolvido como parte do processo sele
   * Spring Boot
   * Maven
 - Frontend:
-  //TODO
+  * HTML
+  * CSS
+  * JS
 
 ## Funcionalidades
 - Simulação de financiamento interno e externo
