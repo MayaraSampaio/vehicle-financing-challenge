@@ -1,0 +1,46 @@
+{
+	"info": {
+		"_postman_id": "63884159-2501-4d1f-ac2e-c3763d8c2f9a",
+		"name": "Financiamento",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "38908838"
+	},
+	"item": [
+		{
+			"name": "calcular",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"tipo_financiamento\": \"INTERNO\",\r\n    \"valor_viatura\": 50000.0,\r\n    \"numero_mensalidades\": 36\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/financiamento/calcular"
+			},
+			"response": []
+		},
+		{
+			"name": "guardar",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"tipoFinanciamento\": \"EXTERNO\",\r\n    \"valorViatura\":  50000.0,\r\n    \"numeroMensalidades\": 36,\r\n    \"valorPrestacao\": 1444.44,\r\n    \"cliente\": {\r\n        \"nome\": \"Mayara Sampaio\",\r\n        \"contacto\": \"934025378\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/simulacao/guardar"
+			},
+			"response": []
+		}
+	]
+}
