@@ -13,19 +13,19 @@
   <h3>Simule seu Financiamento</h3>
   <form id="financiamentoForm">
     <label>Valor do Veículo (€)</label>
-    <input type="text" id="valorViatura" placeholder="Digite o valor..." required>
+    <input type="text" id="vehicleValue" placeholder="Digite o valor..." required>
     <label>Tipo de Financiamento</label>
-    <select id="tipoFinanciamento" onchange="atualizarOpcoesMensalidades()">
+    <select id="financingType" onchange="numberOfInstallments()">
       <option value="INTERNAL">Interno (Até 48 meses)</option>
       <option value="EXTERNAL">Externo (Até 60 meses)</option>
     </select>
     <label>Número de Mensalidades</label>
-    <select id="numeroMensalidades"></select>
-    <button type="button" onclick="calculaFinanciamento()">Calcular</button>
+    <select id="numberOfInstallments"></select>
+    <button type="button" onclick="calculateFinancing()">Calcular</button>
   </form>
   <h3>Resultado</h3>
-  <p id="resultado"></p>
-  <button type="button" id="btnSalvar" onclick="irParaSalvar()" disabled>Salvar Financiamento</button>
+  <p id="result"></p>
+  <button type="button" id="btnSalvar" onclick="goToSave()" disabled>Guardar Financiamento</button>
 </div>
 <script src="script.js"></script>
 </body>

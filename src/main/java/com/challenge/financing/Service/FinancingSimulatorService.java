@@ -1,12 +1,10 @@
 package com.challenge.financing.Service;
-
 import com.challenge.financing.Request.FinancingSimulatorCalculationRequest;
 import com.challenge.financing.Request.FinancingSimulatorSaveRequest;
 import com.challenge.financing.Entity.Enums.FinancingType;
 import com.challenge.financing.Response.FinancingSimulatorCalculationResponse;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -68,7 +66,6 @@ public class FinancingSimulatorService {
             throw new RuntimeException("Unable to save the financing", e);
         }
     }
-
     public FinancingSimulatorCalculationResponse processFinancingCalculation(FinancingSimulatorCalculationRequest request) {
         FinancingType type = FinancingType.valueOf(request.getFinancingType());
         Double monthlyInstallment = calculateFinancing(type, request.getNumberOfInstallments(), request.getVehicleValue());
