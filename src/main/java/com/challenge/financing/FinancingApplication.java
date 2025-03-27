@@ -1,13 +1,12 @@
-package com.desafio.financiamento;
+package com.challenge.financing;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class FinanciamentoApplication {
+public class FinancingApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(FinanciamentoApplication.class, args);
+		SpringApplication.run(FinancingApplication.class, args);
 	}
-
 }
