@@ -1,7 +1,7 @@
 # Desafio de Financiamento de Veículos 🚗💰
 
 ## Descrição do Projeto
-Simulador de Financiamento de Veículos desenvolvido como parte do processo seletivo. A aplicação permite calcular e salvar simulações de financiamento de veículos com diferentes modalidades.
+Simulador de Financiamento de Veículos desenvolvido como parte do processo seletivo da Salvador Caetano. A aplicação permite calcular e salvar simulações de financiamento de veículos com diferentes modalidades.
 
 ## Tecnologias Utilizadas
 - Backend: 
@@ -18,12 +18,38 @@ Simulador de Financiamento de Veículos desenvolvido como parte do processo sele
 - Cálculo de prestações
 - Guardar simulações em ficheiro
 
-## Como Rodar o Projeto
-//TODO
+# Financing Simulator Project
 
-## Prints do Projeto
-![image](https://github.com/user-attachments/assets/4ddbeb59-56e7-4319-b2e0-b0ebc34becbd)
-![image](https://github.com/user-attachments/assets/2a0c17cd-39b6-44b4-a1db-16ca639655cb)
+## Requisitos Preliminares
 
----
-Desenvolvido como parte do processo seletivo 🏆
+- Java 17 ou superior
+- Maven
+- Node.js (versão 14 ou superior)
+- npm (geralmente instalado com o Node.js)
+
+## Configuração do Backend (Spring Boot)
+
+### Passos para Executar o Projeto Backend:
+
+1. Clone o repositório:
+```bash
+git clone https://github.com/MayaraSampaio/vehicle-financing-challenge.git
+cd financing-simulator
+```
+
+2. Compile o projeto com Maven:
+```bash
+mvn clean install
+```
+
+3. Execute a aplicação Spring Boot:
+```bash
+mvn spring-boot:run
+```
+
+3. Execute o index.html na pasta frontend.
+
+
+
+
+Desenvolvido como parte do processo seletivo Salvador Caetano 🏆
