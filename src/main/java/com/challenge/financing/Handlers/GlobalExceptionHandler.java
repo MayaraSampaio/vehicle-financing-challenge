@@ -1,4 +1,4 @@
-package com.challenge.financing.Controller.Handlers;
+package com.challenge.financing.Handlers;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;

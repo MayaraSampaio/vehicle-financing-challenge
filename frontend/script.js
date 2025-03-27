@@ -1,5 +1,7 @@
-document.addEventListener("DOMContentLoaded", updateInstallmentOptions);
-
+document.addEventListener("DOMContentLoaded", () => {
+    updateInstallmentOptions(); // Garante que os valores são carregados corretamente na inicialização
+    document.getElementById("financingType").addEventListener("change", updateInstallmentOptions);
+});
 function updateInstallmentOptions() {
     const type = document.getElementById("financingType").value;
     const selectInstallments = document.getElementById("numberOfInstallments");
