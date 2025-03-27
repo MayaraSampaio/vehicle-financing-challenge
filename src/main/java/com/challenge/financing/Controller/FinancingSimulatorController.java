@@ -1,7 +1,7 @@
 package com.challenge.financing.Controller;
-import com.challenge.financing.Request.FinancingSimulatorCalculationRequest;
-import com.challenge.financing.Request.FinancingSimulatorSaveRequest;
-import com.challenge.financing.Response.FinancingSimulatorCalculationResponse;
+import com.challenge.financing.Controller.Request.FinancingSimulatorCalculationRequest;
+import com.challenge.financing.Controller.Request.FinancingSimulatorSaveRequest;
+import com.challenge.financing.Controller.Response.FinancingSimulatorCalculationResponse;
 import com.challenge.financing.Service.FinancingSimulatorService;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;

@@ -1,8 +1,8 @@
 package com.challenge.financing.Service;
-import com.challenge.financing.Request.FinancingSimulatorCalculationRequest;
-import com.challenge.financing.Request.FinancingSimulatorSaveRequest;
-import com.challenge.financing.Entity.Enums.FinancingType;
-import com.challenge.financing.Response.FinancingSimulatorCalculationResponse;
+import com.challenge.financing.Controller.Request.FinancingSimulatorCalculationRequest;
+import com.challenge.financing.Controller.Request.FinancingSimulatorSaveRequest;
+import com.challenge.financing.Service.Enum.FinancingType;
+import com.challenge.financing.Controller.Response.FinancingSimulatorCalculationResponse;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import java.io.FileWriter;

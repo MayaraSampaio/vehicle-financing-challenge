@@ -1,4 +1,4 @@
-package com.challenge.financing.Entity.Enums;
+package com.challenge.financing.Service.Enum;
 
 import lombok.AllArgsConstructor;
 

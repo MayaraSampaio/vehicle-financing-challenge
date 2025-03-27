@@ -1,4 +1,4 @@
-package com.challenge.financing.Request;
+package com.challenge.financing.Controller.Request;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;

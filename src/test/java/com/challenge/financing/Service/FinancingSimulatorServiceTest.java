@@ -1,6 +1,6 @@
 package com.challenge.financing.Service;
 
-import com.challenge.financing.Entity.Enums.FinancingType;
+import com.challenge.financing.Service.Enum.FinancingType;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;

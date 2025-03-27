@@ -1,4 +1,4 @@
-package com.challenge.financing.Request;
+package com.challenge.financing.Controller.Request;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Getter;
