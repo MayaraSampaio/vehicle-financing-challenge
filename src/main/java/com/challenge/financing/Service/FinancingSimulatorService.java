@@ -20,6 +20,8 @@ public class FinancingSimulatorService {
     @Value("${properties.factor.external:1.065}") // Adjustment factor for external financing (default: 1.065)
     private Double externalFinancingAdjustmentFactor;
 
+
+
     private static final String FILE_PATH = "simulations_data/financing_data.txt";
 
     public Double calculateFinancing(FinancingType financingType, Integer numberOfInstallments, Double vehicleValue) {
@@ -66,6 +68,7 @@ public class FinancingSimulatorService {
             throw new RuntimeException("Unable to save the financing", e);
         }
     }
+
     public FinancingSimulatorCalculationResponse processFinancingCalculation(FinancingSimulatorCalculationRequest request) {
         FinancingType type = FinancingType.valueOf(request.getFinancingType());
         Double monthlyInstallment = calculateFinancing(type, request.getNumberOfInstallments(), request.getVehicleValue());

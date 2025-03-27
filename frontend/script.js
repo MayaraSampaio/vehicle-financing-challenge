@@ -51,7 +51,7 @@ function calculateFinancing() {
     .catch(error => console.error("Erro ao calcular:", error));
 }
 function goToSave() {
-    window.location.href = "salvar.html";
+    window.location.href = "save.html";
 }
 
 document.addEventListener("DOMContentLoaded", () => {
