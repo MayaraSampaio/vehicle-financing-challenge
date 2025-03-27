@@ -1,99 +1,95 @@
-document.addEventListener("DOMContentLoaded", atualizarOpcoesMensalidades);
+document.addEventListener("DOMContentLoaded", updateInstallmentOptions);
 
-function atualizarOpcoesMensalidades() {
-    const tipo = document.getElementById("tipoFinanciamento").value;
-    const selectMensalidades = document.getElementById("numeroMensalidades");
+function updateInstallmentOptions() {
+    const type = document.getElementById("financingType").value;
+    const selectInstallments = document.getElementById("numberOfInstallments");
 
-    selectMensalidades.innerHTML = "";
+    selectInstallments.innerHTML = "";
 
-    const maxMeses = tipo === "INTERNO" ? 48 : 60;
+    const maxMonths = type === "INTERNAL" ? 48 : 60;
 
-    for (let i = 12; i <= maxMeses; i += 12) {
+    for (let i = 12; i <= maxMonths; i += 12) {
         let option = document.createElement("option");
         option.value = i;
         option.textContent = `${i} meses`;
-        selectMensalidades.appendChild(option);
+        selectInstallments.appendChild(option);
     }
 }
+function calculateFinancing() {
+    let value = document.getElementById("vehicleValue").value.replace(",", ".");
+    let type = document.getElementById("financingType").value;
+    let months = document.getElementById("numberOfInstallments").value;
 
-function irParaSalvar() {
-    window.location.href = "salvar.html";
-}
-document.addEventListener("DOMContentLoaded", () => {
-    const financiamentoData = JSON.parse(localStorage.getItem("financiamentoData"));
-
-    document.getElementById("resValorViatura").textContent = financiamentoData.valorViatura.toFixed(2);
-    document.getElementById("resTipoFinanciamento").textContent = financiamentoData.tipoFinanciamento;
-    document.getElementById("resNumeroMensalidades").textContent = financiamentoData.numeroMensalidades;
-    document.getElementById("resValorPrestacao").textContent = financiamentoData.valorPrestacao.toFixed(2);
-});
-
-function salvaFinanciamento() {
-    const financiamentoData = JSON.parse(localStorage.getItem("financiamentoData"));
-    let nome = document.getElementById("nome").value;
-    let contacto = document.getElementById("contacto").value;
-
-    if (!nome || !contacto) {
-        alert("Por favor, preencha nome e contacto.");
+    if (!value || isNaN(value) || value <= 0) {
+        alert("Por favor, insira um valor válido para o veículo.");
         return;
     }
-
-    fetch("http://localhost:8080/simulacao/guardar", {
+    fetch("http://localhost:8080/v1/api/simulator/calculate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-            tipoFinanciamento: financiamentoData.tipoFinanciamento,
-            numeroMensalidades: financiamentoData.numeroMensalidades,
-            valorViatura: financiamentoData.valorViatura,
-            valorPrestacao: financiamentoData.valorPrestacao,
-            cliente: {
-                nome: nome,
-                contacto: contacto
+            financingType: type,
+            numberOfInstallments: parseInt(months),
+            vehicleValue: parseFloat(value)
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        let installmentAmount = data.installmentAmount;
+        document.getElementById("result").innerHTML =
+            "Valor da Prestação :" + installmentAmount.toFixed(2) + "€";
+
+        localStorage.setItem("financingData", JSON.stringify({
+            vehicleValue: parseFloat(value),
+            financingType: type,
+            numberOfInstallments: parseInt(months),
+            installmentAmount: installmentAmount
+        }));
+
+        document.getElementById("btnSalvar").disabled = false;
+    })
+    .catch(error => console.error("Erro ao calcular:", error));
+}
+function goToSave() {
+    window.location.href = "save.html";
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    const financingData = JSON.parse(localStorage.getItem("financingData"));
+
+    document.getElementById("resvehicleValue").textContent = financingData.vehicleValue.toFixed(2);
+    document.getElementById("resfinancingType").textContent = financingData.financingType;
+    document.getElementById("resnumberOfInstallments").textContent = financingData.numberOfInstallments;
+    document.getElementById("resinstallmentAmount").textContent = financingData.installmentAmount.toFixed(2);
+});
+function saveFinancing() {
+    const financingData = JSON.parse(localStorage.getItem("financingData"));
+    let name = document.getElementById("name").value;
+    let contact = document.getElementById("contact").value;
+
+    if (!name || !contact) {
+        alert("Por favor, preencha nome e contacto.");
+        return;
+    }
+    fetch("http://localhost:8080/v1/api/simulator/save", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            financingType: financingData.financingType,
+            numberOfInstallments: financingData.numberOfInstallments,
+            vehicleValue: financingData.vehicleValue,
+            installmentAmount: financingData.installmentAmount,
+            client: {
+                name: name,
+                contact: contact
             }
         })
     })
     .then(response => response.text())
     .then(data => {
         alert("Financiamento salvo com sucesso!");
-        localStorage.removeItem("financiamentoData"); // Limpa os dados após salvar
+        localStorage.removeItem("financingData"); // Clear data after saving
         window.location.href = "index.html";
     })
     .catch(error => console.error("Erro ao salvar:", error));
-}
-
-function calculaFinanciamento() {
-    let valor = document.getElementById("valorViatura").value.replace(",", ".");
-    let tipo = document.getElementById("tipoFinanciamento").value;
-    let meses = document.getElementById("numeroMensalidades").value;
-
-    if (!valor || isNaN(valor) || valor <= 0) {
-        alert("Por favor, insira um valor válido para o veículo.");
-        return;
-    }
-
-    fetch("http://localhost:8080/simulacao/calcular", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-            tipoFinanciamento: tipo,
-            numeroMensalidades: parseInt(meses),
-            valorViatura: parseFloat(valor)
-        })
-    })
-    .then(response => response.json())
-    .then(data => {
-        let valorPrestacao = data.valorPrestacao;
-        document.getElementById("resultado").innerHTML =
-            "Valor da Prestação: €" + valorPrestacao.toFixed(2);
-
-        localStorage.setItem("financiamentoData", JSON.stringify({
-            valorViatura: parseFloat(valor),
-            tipoFinanciamento: tipo,
-            numeroMensalidades: parseInt(meses),
-            valorPrestacao: valorPrestacao
-        }));
-
-        document.getElementById("btnSalvar").disabled = false;
-    })
-    .catch(error => console.error("Erro ao calcular:", error));
 }

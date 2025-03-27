@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salvar Financiamento</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <img src="https://cdn-icons-png.flaticon.com/512/48/48688.png" alt="Logo da Empresa">
+    <h2>Detalhes do Financiamento</h2>
+    <p><strong>Valor do Veículo:</strong> <span id="resvehicleValue"></span> €</p>
+    <p><strong>Tipo de Financiamento:</strong> <span id="resfinancingType"></span></p>
+    <p><strong>Número de Mensalidades:</strong> <span id="resnumberOfInstallments"></span></p>
+    <p><strong>Valor da Prestação:</strong> <span id="resinstallmentAmount"></span> €</p>
+
+    <h3>Salvar Financiamento</h3>
+    <form id="salvarForm">
+        <label>Nome:</label>
+        <input type="text" id="name" placeholder="Seu nome" required>
+
+        <label>Contacto:</label>
+        <input type="text" id="contact" placeholder="Telefone ou email" required>
+
+        <button type="button" onclick="saveFinancing()">Guardar</button>
+    </form>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
