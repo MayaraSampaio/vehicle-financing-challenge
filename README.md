@@ -27,9 +27,8 @@ Simulador de Financiamento de Veículos desenvolvido como parte do processo sele
 - Node.js (versão 14 ou superior)
 - npm (geralmente instalado com o Node.js)
 
-## Configuração do Backend (Spring Boot)
 
-### Passos para Executar o Projeto Backend:
+### Passos para Executar o Projeto :
 
 1. Clone o repositório:
 ```bash
